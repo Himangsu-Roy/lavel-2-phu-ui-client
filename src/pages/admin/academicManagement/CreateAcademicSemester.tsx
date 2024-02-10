@@ -4,6 +4,7 @@ import PHInput from "../../../components/form/PHInput";
 import { Button } from "antd";
 
 const CreateAcademicSemester = () => {
+  const [addAcademicSemester] = 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     console.log(data);
   };
