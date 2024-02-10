@@ -1,10 +1,10 @@
-import { Layout, Menu } from "antd";
-const { Header, Content, Footer, Sider } = Layout;
+import { Button, Layout } from "antd";
+const { Header, Content } = Layout;
 
 import { Outlet } from "react-router-dom";
-import { adminPaths } from "../../routes/admin.routes";
-import { sidebarItemsGenerator } from "../../utils/sidebarItemsGenerator";
 import Sidebar from "./Sidebar";
+import { useAppDispatch } from "../../redux/hooks";
+import { logout } from "../../redux/features/auth/authSlice";
 
 // const items = [
 //   UserOutlined,
@@ -17,21 +17,25 @@ import Sidebar from "./Sidebar";
 //   label: `nav ${index + 1}`,
 // }));
 
-
-
 const MainLayout = () => {
   // const {
   //   token: { colorBgContainer, borderRadiusLG },
   // } = theme.useToken();
+  const dispatch = useAppDispatch()
+  const handleLogout = () => { 
+    dispatch(logout())
+  }
   return (
     <Layout
       style={{
         minHeight: "100vh",
       }}
     >
-      <Sidebar/>
+      <Sidebar />
       <Layout>
-        <Header style={{ padding: 0 }} />
+        <Header>
+          <Button onClick={handleLogout}>Logout</Button>
+        </Header>
         <Content style={{ margin: "24px 16px 0" }}>
           <div
           // style={{
